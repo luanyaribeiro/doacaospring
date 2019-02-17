@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Doacao implements Serializable {
@@ -15,10 +17,13 @@ public class Doacao implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer codDoacao;
 	private String descricao;
+	
+	@OneToOne
+	@JoinColumn(name="medicamento_codTUSS")
+	private Medicamento medicamento;
 
 
 	public Doacao() {
-		
 	}
 
 	public Doacao(Integer codDoacao, String descricao) {
